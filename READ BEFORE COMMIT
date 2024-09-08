@@ -1,0 +1,4 @@
+Delete gateway.json
+Delete discordia.log
+Reset 'data' file contents to 0
+Reset config.lua
