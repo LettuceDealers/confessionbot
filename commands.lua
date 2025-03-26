@@ -4,9 +4,10 @@ local config = require("config")
 local db = require("db")
 
 function getRandomColor()
-	local r = math.random(5, 255)
-    local g = math.random(5, 255)
-    local b = math.random(5, 255)
+	local min = 10
+	local r = math.random(min, 255)
+    local g = math.random(min, 255)
+    local b = math.random(min, 255)
 	return _G["Discordia"].Color.fromRGB(r,g,b).value
 end
 
@@ -31,9 +32,9 @@ module.Commands = {
 				footer = {text="If this confession breaks the rules, please ask a staff member to delete it."},
 				color = getRandomColor(),
 			}
-			SendChannel:send{embed=confessionembed,}
+			SendChannel:send{embed=confessionembed}
 			interaction:reply("Your confession has been added!",true)
-			config.confessionNumber = config.confessionNumber+1
+			config.confessionNumber+=1
 			db.update()
 			return
 		end,
